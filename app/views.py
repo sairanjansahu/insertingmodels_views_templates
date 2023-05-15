@@ -28,12 +28,18 @@ def display_webpage(request):
 
 def update_webpage(request):
     Webpage.objects.filter(name='dhoni').update(url='http://dhoni.in')
-    Webpage.objects.update_or_create(name='rohit',defaults={'url':'http://rohit.com'})
     TO=Topic.objects.get_or_create(topic_name='cricket') [0]
     TO.save()
     Webpage.objects.update_or_create(name='RUSSELL',defaults={'topic_name':TO,'url':'http://RUSSELL.com'})
     Webpage.objects.filter(name='RAHUL').update(url='http://rahul.com')
     Webpage.objects.filter(name='RAHUL').delete()
+    Webpage.objects.filter(name='RUSSELL').update(url='http://russell.in')
+    TO=Topic.objects.get_or_create(topic_name='KOKO') [0]
+    TO.save()
+    Webpage.objects.update_or_create(name='RAM',defaults={'topic_name':TO,'url':'http://suraj.com'})
+    Webpage.objects.filter(name='SAM').delete()
+    Webpage.objects.filter(name='RAM').delete()
+
     d={'webpage':Webpage.objects.all()}
     return render(request,'display_webpage.html',d)
 
